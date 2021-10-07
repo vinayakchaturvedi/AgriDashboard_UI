@@ -1,0 +1,138 @@
+body {
+    /*background: url("background1.png") no-repeat fixed;*/
+    background-size: cover;
+    height: calc(100vh - 80px);
+}
+
+.Welcome body {
+    /*background: url("Agri-tech.jpg") no-repeat fixed;*/
+    background-size: cover;
+    height: calc(100vh - 0px);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+nav {
+    background-color: antiquewhite;
+    padding: 1%;
+
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+.logo {
+    font-size: 2em;
+}
+
+.LeftLabel {
+    float: left;
+    margin-right: 27%;
+}
+
+.RightLabel {
+    float: right;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sidebar{
+    width: 10%;
+    height: 100%;
+    background: #267641ba;
+    padding: 5% 0;
+    position: fixed;
+}
+
+.wrapper .sidebar h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 18%;
+}
+
+.wrapper .sidebar ul li{
+    padding: 10%;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .sidebar ul li a{
+    color: #ffffff;
+    display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+    width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+    background-color: #b9e2c0;
+}
+
+.wrapper .sidebar ul li:hover a{
+    color: #080808;
+}
+
+.LandingPage .main_content{
+    margin-left: 200px;
+}
+
+.LandingPage .main_content .Graph{
+    padding: 20px;
+    background: #fff;
+    color: #717171;
+    border-bottom: 1px solid #e0e4e8;
+}
+
+.LandingPage .main_content .Tables{
+    margin: 20px;
+    color: #717171;
+    line-height: 25px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 2% 0;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
