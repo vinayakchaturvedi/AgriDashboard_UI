@@ -67,12 +67,12 @@ nav ul li {
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li div{
     color: #ffffff;
     display: block;
 }
 
-.wrapper .sidebar ul li a .fas{
+.wrapper .sidebar ul li div .fas{
     width: 25px;
 }
 
@@ -80,7 +80,7 @@ nav ul li {
     background-color: #b9e2c0;
 }
 
-.wrapper .sidebar ul li:hover a{
+.wrapper .sidebar ul li:hover div{
     color: #080808;
 }
 
@@ -92,7 +92,10 @@ nav ul li {
     padding: 20px;
     background: #fff;
     color: #717171;
-    border-bottom: 1px solid #e0e4e8;
+    border:3px dashed black;
+    border-radius: 25px;
+    margin-top: 1%;
+    margin-right: 1%;
 }
 
 .LandingPage .main_content .Tables{

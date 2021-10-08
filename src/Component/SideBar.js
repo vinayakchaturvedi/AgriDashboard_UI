@@ -3,26 +3,33 @@ import "../App.css";
 
 class SideBar extends Component {
 
-    constructor() {
+    constructor(props) {
         super();
+        this.state = {
+            types: props.types,
+            handler: props.handler
+        }
     }
 
+
     render() {
+
+        let availableTypes = this.state.types.map(
+            (type, index) =>
+                <li onClick={this.state.handler}
+                    key={index}
+                    id={type}>
+                    <div id={type}><i className="fas"/>{type}</div>
+                </li>
+        )
+
         return (
             <div className="SideBar">
                 <div className="wrapper">
                     <div className="sidebar">
                         <h2>Select Datapoint</h2>
                         <ul>
-                            <li><a href="#"><i className="fas"/>Seed</a></li>
-                            <li><a href="#"><i className="fas"/>Kharif Crop</a></li>
-                            <li><a href="#"><i className="fas"/>Fertilizer</a></li>
-                            <li><a href="#"><i className="fas"/>Reservoir</a></li>
-                            <li><a href="#"><i className="fas"/>Micro Irrigation</a></li>
-                            <li><a href="#"><i className="fas"/>Milk</a></li>
-                            <li><a href="#"><i className="fas"/>Eggs</a></li>
-                            <li><a href="#"><i className="fas"/>Agri Credit</a></li>
-                            <li><a href="#"><i className="fas"/>Pulses</a></li>
+                            {availableTypes}
                         </ul>
                     </div>
                 </div>

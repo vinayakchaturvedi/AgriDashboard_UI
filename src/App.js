@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import SideBar from "./Component/SideBar";
 import LandingPage from "./Component/LandingPage";
 
 

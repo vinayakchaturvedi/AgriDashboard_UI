@@ -1,0 +1,9 @@
+{
+  "Seed": "/Seed/api/v1/resources/seed/all",
+  "Kharif-Crop": "/Khariff_Prod/api/v1/resources/khariff_prod/all",
+  "Fertilizer": "/Fertilizer_Consumption/api/v1/resources/fertilizer_consumption/all",
+  "Reservoir": "/Reservoir/api/v1/resources/reservoir/all",
+  "Micro-Irrigation": "/Micro_Irrigation/api/v1/resources/area_under_micro_irrigation/all",
+  "Milk": "/Milk_Prduction/api/v1/resources/milk/all",
+  "Eggs": "/Eggs_Production/api/v1/resources/eggs/all"
+}
