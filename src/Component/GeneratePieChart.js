@@ -10,7 +10,8 @@ class GeneratePieChart extends Component {
             dataset: props.dataset,
             years: [],
             isLoading: true,
-            name: props.name
+            name: props.name,
+            viewType: props.viewType
         }
 
         this.createChart = this.createChart.bind(this);
@@ -19,12 +20,12 @@ class GeneratePieChart extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         this.setState({
             dataset: nextProps.dataset,
             years: [],
             isLoading: true,
-            name: nextProps.name
+            name: nextProps.name,
+            viewType: nextProps.viewType
         }, () => this.loadYears());
     }
 
@@ -73,7 +74,7 @@ class GeneratePieChart extends Component {
             }
 
             let currPieChart = new Chart(ctx, {
-                type: 'pie',
+                type: this.state.viewType,
                 options: {
                     legend: {
                         position: 'right',
@@ -91,7 +92,7 @@ class GeneratePieChart extends Component {
                     datasets: [
                         {
                             data: tempData,
-                            backgroundColor: chartColors,
+                            backgroundColor: this.state.viewType === 'line' ? ['green'] : chartColors,
                         }
                     ],
                 },
@@ -107,8 +108,6 @@ class GeneratePieChart extends Component {
                 <div/>
             )
         }
-
-        console.log("Child Name: ", this.state.name)
 
         let years = this.state.years.map(
             (year, index) =>
@@ -133,7 +132,7 @@ class GeneratePieChart extends Component {
             <div className="main_content">
                 <div className="Graph">
                     <div>
-                        <div style={{width: "50%"}}>
+                        <div style={{width: "60%"}}>
                             <canvas
                                 id={"PieChart"}
                             />

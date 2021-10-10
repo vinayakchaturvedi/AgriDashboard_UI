@@ -13,11 +13,13 @@ class LandingPage extends Component {
             apis: {},
             types: [],
             isLoading: true,
-            requestedType: "Kharif-Crop"
+            requestedType: "Kharif-Crop",
+            viewType: "pie"
         }
 
         this.preProcessAndLoadTheData = this.preProcessAndLoadTheData.bind(this)
-        this.handleClick = this.handleClick.bind(this)
+        this.handleClickForProductType = this.handleClickForProductType.bind(this)
+        this.handleClickForToggleView = this.handleClickForToggleView.bind(this)
     }
 
     async componentDidMount() {
@@ -40,12 +42,10 @@ class LandingPage extends Component {
         })
     }
 
-    async handleClick(event) {
+    async handleClickForProductType(event) {
         const id = event.target.id
         const url = this.state.apis[id]
         let receivedResponse = {}
-
-        console.log("Received Value: ", id)
 
         //Load requested Data
         let response = await fetch(url, {
@@ -68,6 +68,14 @@ class LandingPage extends Component {
         })
     }
 
+    handleClickForToggleView(event) {
+        const id = event.target.id
+
+        this.setState({
+            viewType: id
+        })
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -76,17 +84,19 @@ class LandingPage extends Component {
             )
         }
 
-        console.log("Parent Name: ", this.state.requestedType)
-
         return (
             <div className="LandingPage">
-                <NavBar/>
-                <SideBar types={this.state.types}
-                         handler={this.handleClick}/>
+                <NavBar
+                    toggleViewHandler={this.handleClickForToggleView}/>
+
+                <SideBar
+                    types={this.state.types}
+                    handler={this.handleClickForProductType}/>
 
                 <GeneratePieChart
                     dataset={this.state.request}
                     name={this.state.requestedType}
+                    viewType={this.state.viewType}
                 />
 
             </div>

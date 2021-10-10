@@ -2,6 +2,7 @@ body {
     /*background: url("background1.png") no-repeat fixed;*/
     background-size: cover;
     height: calc(100vh - 80px);
+    background-color: #d8cece;
 }
 
 .Welcome body {
@@ -10,7 +11,7 @@ body {
     height: calc(100vh - 0px);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,13 +21,18 @@ body {
 }
 
 nav {
-    background-color: antiquewhite;
+    background-color: #ffffff;
     padding: 1%;
-
 }
 
 nav ul li {
     display: inline-block;
+    margin: 3px;
+}
+
+nav ul li h3 {
+    width: 99%;
+    text-align: center;
 }
 
 .logo {
@@ -42,12 +48,12 @@ nav ul li {
     float: right;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     position: relative;
 }
 
-.wrapper .sidebar{
+.wrapper .sidebar {
     width: 10%;
     height: 100%;
     background: #267641ba;
@@ -55,51 +61,54 @@ nav ul li {
     position: fixed;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar h2 {
     color: #fff;
     text-align: center;
     margin-bottom: 18%;
 }
 
-.wrapper .sidebar ul li{
+.wrapper .sidebar ul li {
     padding: 10%;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.wrapper .sidebar ul li div{
+.wrapper .sidebar ul li div {
     color: #ffffff;
     display: block;
 }
 
-.wrapper .sidebar ul li div .fas{
+.wrapper .sidebar ul li div .fas {
     width: 25px;
 }
 
-.wrapper .sidebar ul li:hover{
+.wrapper .sidebar ul li:hover {
     background-color: #b9e2c0;
 }
 
-.wrapper .sidebar ul li:hover div{
+.wrapper .sidebar ul li:hover div {
     color: #080808;
 }
 
-.LandingPage .main_content{
-    margin-left: 200px;
+.LandingPage .main_content {
+    margin: 1% 1% 1% 11%;
+    background-color: rgba(255, 255, 255, 255);
+    border: 3px solid white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 25px;
 }
 
-.LandingPage .main_content .Graph{
+.LandingPage .main_content .Graph {
     padding: 20px;
     background: #fff;
     color: #717171;
-    border:3px dashed black;
+    border: 3px dashed black;
     border-radius: 25px;
-    margin-top: 1%;
-    margin-right: 1%;
+    margin: 2%;
 }
 
-.LandingPage .main_content .Tables{
-    margin: 20px;
+.LandingPage .main_content .Tables {
+    margin: 2%;
     color: #717171;
     line-height: 25px;
 }
@@ -128,7 +137,7 @@ nav ul li {
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #d6f2d6;
 }
 
 .styled-table tbody tr:last-of-type {
