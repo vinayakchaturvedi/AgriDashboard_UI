@@ -92,7 +92,7 @@ class GeneratePieChart extends Component {
                     datasets: [
                         {
                             data: tempData,
-                            backgroundColor: this.state.viewType === 'line' ? ['green'] : chartColors,
+                            backgroundColor: this.state.viewType === 'line' ? ['rgba(157,248,139,0.5)'] : chartColors,
                         }
                     ],
                 },
@@ -132,9 +132,11 @@ class GeneratePieChart extends Component {
             <div className="main_content">
                 <div className="Graph">
                     <div>
-                        <div style={{width: "60%"}}>
+                        <div style={{width: "60%", height: "50%"}}>
                             <canvas
                                 id={"PieChart"}
+                                width="80%"
+                                height="40%"
                             />
                         </div>
                     </div>
