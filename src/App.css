@@ -152,3 +152,30 @@ nav ul li h3 {
 .pieCharts {
     display: inline-block;
 }
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.labelMapping {
+    padding: 1%;
+}
+
+.mapping {
+    width: 20%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
