@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "../App.css";
 import {Chart} from "react-chartjs-2";
-import Queue from "../Utility/Queue";
 
 class GeneratePieChart extends Component {
 
@@ -13,7 +12,6 @@ class GeneratePieChart extends Component {
             isLoading: true,
             name: props.name,
             viewType: props.viewType,
-            queue: new Queue(),
             yearsForPieChart: [],
             labels: []
         }
