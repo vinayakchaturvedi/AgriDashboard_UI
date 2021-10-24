@@ -17,6 +17,7 @@ class GeneratePieChart extends Component {
         this.createChart = this.createChart.bind(this);
         this.getRandomColor = this.getRandomColor.bind(this);
         this.loadYears = this.loadYears.bind(this);
+        this.generatePieChart = this.generatePieChart.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -68,37 +69,41 @@ class GeneratePieChart extends Component {
 
             for (let i = 0; i < this.state.dataset.result.length; i++) {
                 let obj = this.state.dataset.result[i]
-                tempData.push(obj["2014-15"])
+                tempData.push(obj[this.state.years[0]])
                 chartColors.push(this.getRandomColor())
                 labels.push(obj.StateName)
             }
 
-            let currPieChart = new Chart(ctx, {
-                type: this.state.viewType,
-                options: {
-                    legend: {
-                        position: 'right',
-                        align: 'end'
-                    },
-                    title: {
-                        display: true,
-                        fontColor: 'rgb(71,37,37)',
-                        fontSize: 26,
-                        text: this.state.name,
-                    }
-                },
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            data: tempData,
-                            backgroundColor: this.state.viewType === 'line' ? ['rgba(157,248,139,0.5)'] : chartColors,
-                        }
-                    ],
-                },
-            });
+            this.generatePieChart(ctx, labels, tempData, chartColors);
         }
 
+    }
+
+    generatePieChart(ctx, labels, tempData, chartColors) {
+        let currPieChart = new Chart(ctx, {
+            type: this.state.viewType,
+            options: {
+                legend: {
+                    position: 'right',
+                    align: 'end'
+                },
+                title: {
+                    display: true,
+                    fontColor: 'rgb(71,37,37)',
+                    fontSize: 26,
+                    text: this.state.name,
+                }
+            },
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        data: tempData,
+                        backgroundColor: this.state.viewType === 'line' ? ['rgba(157,248,139,0.5)'] : chartColors,
+                    }
+                ],
+            },
+        });
     }
 
     render() {
