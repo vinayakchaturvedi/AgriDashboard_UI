@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "../App.css";
 import {Chart} from "react-chartjs-2";
+import Queue from "../Utility/Queue";
 
 class GeneratePieChart extends Component {
 
@@ -11,7 +12,9 @@ class GeneratePieChart extends Component {
             years: [],
             isLoading: true,
             name: props.name,
-            viewType: props.viewType
+            viewType: props.viewType,
+            queue: new Queue(),
+            yearsForPieChart: []
         }
 
         this.createChart = this.createChart.bind(this);
@@ -32,15 +35,21 @@ class GeneratePieChart extends Component {
 
     loadYears() {
         let givenYears = []
+        let yearsForPieChart = []
 
         for (let key in this.state.dataset.result[0]) {
-            if (key !== 'StateName' && key !== '_id')
+            if (key !== 'StateName' && key !== '_id') {
                 givenYears.push(key)
+                if (yearsForPieChart.length < 1) {
+                    yearsForPieChart.push(key);
+                }
+            }
         }
 
         this.setState({
                 isLoading: false,
-                years: givenYears
+                years: givenYears,
+                yearsForPieChart: yearsForPieChart
             },
             () => this.createChart()
         )
@@ -61,20 +70,24 @@ class GeneratePieChart extends Component {
     }
 
     createChart() {
-        if (document.getElementById("PieChart") !== null) {
-            let ctx = document.getElementById("PieChart").getContext('2d');
-            let chartColors = [];
-            let labels = [];
-            let tempData = [];
 
-            for (let i = 0; i < this.state.dataset.result.length; i++) {
-                let obj = this.state.dataset.result[i]
-                tempData.push(obj[this.state.years[0]])
-                chartColors.push(this.getRandomColor())
-                labels.push(obj.StateName)
+        for (let i = 0; i < this.state.yearsForPieChart.length; i++) {
+            let currYear = this.state.yearsForPieChart[i];
+            if (document.getElementById("PieChart" + i) !== null) {
+                let ctx = document.getElementById("PieChart" + i).getContext('2d');
+                let chartColors = [];
+                let labels = [];
+                let tempData = [];
+
+                for (let j = 0; j < this.state.dataset.result.length; j++) {
+                    let obj = this.state.dataset.result[j]
+                    tempData.push(obj[currYear])
+                    chartColors.push(this.getRandomColor())
+                    labels.push(obj.StateName)
+                }
+
+                this.generatePieChart(ctx, labels, tempData, chartColors);
             }
-
-            this.generatePieChart(ctx, labels, tempData, chartColors);
         }
 
     }
@@ -132,18 +145,26 @@ class GeneratePieChart extends Component {
                 </tr>
         )
 
+        let canvasList = [];
+        for (let i = 0; i < this.state.yearsForPieChart.length; i++) {
+            canvasList.push(
+                <div className="pieCharts">
+                    <div style={{width: "60%", height: "50%"}}>
+                        <canvas
+                            id={"PieChart" + i}
+                            width="80%"
+                            height="40%"
+                        />
+                    </div>
+                </div>
+            )
+        }
 
         return (
             <div className="main_content">
                 <div className="Graph">
                     <div>
-                        <div style={{width: "60%", height: "50%"}}>
-                            <canvas
-                                id={"PieChart"}
-                                width="80%"
-                                height="40%"
-                            />
-                        </div>
+                        {canvasList}
                     </div>
                 </div>
                 <div className="Tables">
