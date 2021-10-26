@@ -13,7 +13,6 @@ class GeneratePieChart extends Component {
             name: props.name,
             viewType: props.viewType,
             yearsForPieChart: [],
-            labels: [],
             statesForLineChart: []
         }
 
@@ -25,8 +24,6 @@ class GeneratePieChart extends Component {
 
         this.createChart = this.createChart.bind(this);
 
-        this.generatePieChart = this.generatePieChart.bind(this);
-        this.generateLineChart = this.generateLineChart.bind(this);
         this.createPieChart = this.createPieChart.bind(this);
         this.createLineChart = this.createLineChart.bind(this);
     }
@@ -90,12 +87,10 @@ class GeneratePieChart extends Component {
 
     createPieChart() {
         let chartColors = [];
-        let labelMapping = [];
         let labelMap = {};
 
         for (let i = 0; i < this.state.yearsForPieChart.length; i++) {
             let currYear = this.state.yearsForPieChart[i];
-            let showLabels = i === this.state.yearsForPieChart.length - 1;
 
             if (document.getElementById("PieChart" + i) !== null) {
                 let ctx = document.getElementById("PieChart" + i).getContext('2d');
@@ -104,11 +99,6 @@ class GeneratePieChart extends Component {
 
                 for (let j = 0, length = 0; j < this.state.dataset.result.length; j++, length++) {
                     let obj = this.state.dataset.result[j]
-
-                    if (length % 8 === 0) {
-                        labelMapping.push(labelMap);
-                        labelMap = {};
-                    }
 
                     tempData.push(obj[currYear])
                     if (i === 0) {
@@ -120,11 +110,26 @@ class GeneratePieChart extends Component {
                     labels.push(obj.StateName)
                 }
 
-                labelMapping.push(labelMap);
 
-                this.setState({
-                    labels: labelMapping
-                }, () => this.generatePieChart(ctx, labels, tempData, chartColors, showLabels, currYear));
+                new Chart(ctx, {
+                    type: "pie",
+                    options: {
+                        legend: {
+                            display: false,
+                            position: 'right',
+                            align: 'end'
+                        }
+                    },
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                data: tempData,
+                                backgroundColor: chartColors,
+                            }
+                        ],
+                    },
+                });
             }
         }
     }
@@ -133,7 +138,6 @@ class GeneratePieChart extends Component {
 
         if (document.getElementById("LineChart") !== null) {
             let datasets = {}
-            let labels = []
 
             let ctx = document.getElementById("LineChart").getContext('2d');
             for (let i = 0; i < this.state.statesForLineChart.length; i++) {
@@ -152,89 +156,54 @@ class GeneratePieChart extends Component {
                     }
                 }
             }
-            this.generateLineChart(ctx, datasets);
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: this.state.years,
+                    datasets: [
+                        {
+                            label: this.state.statesForLineChart[0],
+                            data: datasets[0],
+                            borderColor: 'rgb(75, 192, 192)',
+                        },
+                        {
+                            label: this.state.statesForLineChart[1],
+                            data: datasets[1],
+                            borderColor: 'rgb(45,63,36)',
+                        },
+                        {
+                            label: this.state.statesForLineChart[2],
+                            data: datasets[2],
+                            borderColor: 'rgb(100,46,201)',
+                        }
+                    ],
+                },
+                options: {
+                    legend: {
+                        labels: {
+                            fontColor: 'rgb(71,37,37)',
+                            fontSize: 15
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                fontColor: 'rgb(71,37,37)',
+                                fontSize: 16,
+                                beginAtZero: true
+                            },
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: 'rgb(71,37,37)',
+                                fontSize: 16,
+                            },
+                        }]
+                    }
+
+                }
+            });
         }
-    }
-
-    generatePieChart(ctx, labels, tempData, chartColors, showLabels, title) {
-        let currPieChart = new Chart(ctx, {
-            type: "pie",
-            options: {
-                legend: {
-                    display: false,
-                    position: 'right',
-                    align: 'end'
-                },
-                title: {
-                    display: false,
-                    fontColor: 'rgb(62,129,196)',
-                    fontSize: 26,
-                    text: title,
-                    position: "left"
-                }
-            },
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        data: tempData,
-                        backgroundColor: chartColors,
-                    }
-                ],
-            },
-        });
-
-    }
-
-    generateLineChart(ctx, datasets) {
-        console.log(datasets);
-        let currLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: this.state.years,
-                datasets: [
-                    {
-                        label: this.state.statesForLineChart[0],
-                        data: datasets[0],
-                        borderColor: 'rgb(75, 192, 192)',
-                    },
-                    {
-                        label: this.state.statesForLineChart[1],
-                        data: datasets[1],
-                        borderColor: 'rgb(45,63,36)',
-                    },
-                    {
-                        label: this.state.statesForLineChart[2],
-                        data: datasets[2],
-                        borderColor: 'rgb(100,46,201)',
-                    }
-                ],
-            },
-            options: {
-                legend: {
-                    labels: {
-                        fontColor: 'rgb(71,37,37)',
-                        fontSize: 15
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            fontColor: 'rgb(71,37,37)',
-                            fontSize: 16,
-                            beginAtZero: true
-                        },
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            fontColor: 'rgb(71,37,37)',
-                            fontSize: 16,
-                        },
-                    }]
-                }
-
-            }
-        });
     }
 
     tableHeaderHandleClick(event) {
@@ -316,21 +285,6 @@ class GeneratePieChart extends Component {
         }
         title = title.substring(0, title.length - 2)
 
-        let mapping = [];
-
-        for (let i = 0; i < this.state.labels.length; i++) {
-            let temp = []
-            for (let key in this.state.labels[i]) {
-                temp.push(
-                    <div className="labelMapping">
-                        <span style={{backgroundColor: this.state.labels[i][key]}} className="dot"/> &nbsp; {key}
-                    </div>
-                )
-            }
-            mapping.push(temp)
-        }
-
-
         return (
             <div className="main_content">
                 <div className="Graph">
@@ -348,9 +302,6 @@ class GeneratePieChart extends Component {
                     <h3 style={{color: "rgb(99 99 99)", display: this.state.viewType === "pie" ? "block" : "none"}}>
                         (Years: {title})
                     </h3>
-                </div>
-                <div className="mapping">
-                    {/*{mapping}*/}
                 </div>
                 <div className="Tables">
                     <table className="styled-table">
