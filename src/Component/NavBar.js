@@ -7,14 +7,26 @@ import e1 from "../images/E1.PNG";
 import e2 from "../images/E2.PNG";
 import e3 from "../images/E3.PNG";
 import e4 from "../images/E4.PNG";
+import {withRouter} from "react-router-dom";
 
 class NavBar extends Component {
 
     constructor(props) {
-        super();
+        super(props);
         this.state = {
-            toggleViewHandler: props.toggleViewHandler
+            toggleViewHandler: props.toggleViewHandler,
+            dataset: props.dataset
         }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.props.history.push({
+                pathname: '/IndiaMap',
+                state: {dataset: this.state.dataset}
+            }
+        )
     }
 
     render() {
@@ -45,7 +57,9 @@ class NavBar extends Component {
                                 <img style={{paddingLeft: "15px"}} src={e2}/>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e3}/>
+                                <img style={{paddingLeft: "15px"}} src={e3} onClick={
+                                    this.handleClick
+                                }/>
                             </li>
                             <li>
                                 <img style={{paddingLeft: "75px"}} src={e4}/>
@@ -58,4 +72,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar
+export default withRouter(NavBar);

@@ -6,8 +6,8 @@ import GeneratePieChart from "./GeneratePieChart";
 
 class LandingPage extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             request: {},
             apis: {},
@@ -87,7 +87,8 @@ class LandingPage extends Component {
         return (
             <div className="LandingPage">
                 <NavBar
-                    toggleViewHandler={this.handleClickForToggleView}/>
+                    toggleViewHandler={this.handleClickForToggleView}
+                    dataset={this.state.request}/>
 
                 <SideBar
                     types={this.state.types}

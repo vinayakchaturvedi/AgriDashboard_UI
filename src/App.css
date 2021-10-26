@@ -2,7 +2,7 @@ body {
     /*background: url("background1.png") no-repeat fixed;*/
     background-size: cover;
     height: calc(100vh - 80px);
-    background-color: #d8cece;
+    background-color: #ffffff;
 }
 
 .Welcome body {
@@ -168,14 +168,33 @@ nav ul li h3 {
     width: 20%;
 }
 
-.column {
-    float: left;
-    width: 50%;
+.full-width-height {
+    height: 100vh;
+    width: 100%;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.container {
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+    padding: 16px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.fill {
+    flex: 1;
+}
+
+.center {
+    text-align: center;
+}
+
+.mt16 {
+    margin-top: 16px;
 }
