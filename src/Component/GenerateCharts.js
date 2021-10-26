@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "../App.css";
 import {Chart} from "react-chartjs-2";
 
-class GeneratePieChart extends Component {
+class GenerateCharts extends Component {
 
     constructor(props) {
         super();
@@ -295,7 +295,7 @@ class GeneratePieChart extends Component {
                         <canvas
                             id={"LineChart"}
                             width="20%"
-                            height="5%"
+                            height="4%"
                         />
                     </div>
                     <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
@@ -321,4 +321,4 @@ class GeneratePieChart extends Component {
     }
 }
 
-export default GeneratePieChart
+export default GenerateCharts

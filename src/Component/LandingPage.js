@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "../App.css";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
-import GeneratePieChart from "./GeneratePieChart";
+import GenerateCharts from "./GenerateCharts";
 
 class LandingPage extends Component {
 
@@ -94,7 +94,7 @@ class LandingPage extends Component {
                     types={this.state.types}
                     handler={this.handleClickForProductType}/>
 
-                <GeneratePieChart
+                <GenerateCharts
                     dataset={this.state.request}
                     name={this.state.requestedType}
                     viewType={this.state.viewType}
