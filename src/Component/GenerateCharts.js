@@ -28,6 +28,7 @@ class GenerateCharts extends Component {
         this.createLineChart = this.createLineChart.bind(this);
     }
 
+    
     componentWillReceiveProps(nextProps) {
         this.setState({
             dataset: nextProps.dataset,
