@@ -39,20 +39,21 @@ class LandingPage extends Component {
         let id = "Kharif-Crop"
         const url = this.state.apis[id]
 
-        let response = await fetch(url, {
+        await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
-        });
-        console.log(response);
+        }).then(response => response.json())
+            .then(message => receivedResponse = message);
+        /*console.log(response);
         let status = response.status;
         if (status === 200) {
             receivedResponse = await response.json()
         } else {
             console.log("Error during api call")
-        }
+        }*/
 
         this.setState({
             request: receivedResponse,
@@ -71,19 +72,14 @@ class LandingPage extends Component {
         let receivedResponse = {}
 
         //Load requested Data
-        let response = await fetch(url, {
+        await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': '*/*'
+                'Accept': 'application/json'
             }
-        });
-        let status = response.status;
-        if (status === 200) {
-            receivedResponse = await response.json()
-        } else {
-            console.log("Error during api call")
-        }
+        }).then(response => response.json())
+            .then(message => receivedResponse = message);
 
         this.setState({
             request: receivedResponse,
