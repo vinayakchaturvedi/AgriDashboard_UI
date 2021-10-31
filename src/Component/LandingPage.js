@@ -46,6 +46,7 @@ class LandingPage extends Component {
                 'Accept': 'application/json'
             }
         });
+        console.log(response);
         let status = response.status;
         if (status === 200) {
             receivedResponse = await response.json()
