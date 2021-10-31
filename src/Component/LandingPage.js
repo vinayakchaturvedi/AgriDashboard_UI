@@ -43,7 +43,7 @@ class LandingPage extends Component {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': '*/*'
+                'Accept': 'application/json'
             }
         });
         let status = response.status;
