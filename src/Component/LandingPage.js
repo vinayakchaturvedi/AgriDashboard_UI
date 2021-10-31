@@ -55,6 +55,7 @@ class LandingPage extends Component {
         let status = response.status;
         if (status === 200) {
             receivedResponse = await response.json()
+            console.log(receivedResponse);
         } else {
             console.log("Error during api call")
         }
