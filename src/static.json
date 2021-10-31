@@ -1,0 +1,11 @@
+{
+  "root": "build/",
+  "routes": {
+    "/**": "index.html"
+  },
+  "proxies": {
+    "/Khariff_Prod/api/v1/resources/khariff_prod/all": {
+      "origin": "https://agri-dashboard.herokuapp.com/"
+    }
+  }
+}
