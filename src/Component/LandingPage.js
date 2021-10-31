@@ -10,7 +10,15 @@ class LandingPage extends Component {
         super(props);
         this.state = {
             request: {},
-            apis: {},
+            apis: {
+                "Seed": "/Seed/api/v1/resources/seed/all",
+                "Kharif-Crop": "/Khariff_Prod/api/v1/resources/khariff_prod/all",
+                "Fertilizer": "/Fertilizer_Consumption/api/v1/resources/fertilizer_consumption/all",
+                "Reservoir": "/Reservoir/api/v1/resources/reservoir/all",
+                "Micro-Irrigation": "/Micro_Irrigation/api/v1/resources/area_under_micro_irrigation/all",
+                "Milk": "/Milk_Prduction/api/v1/resources/milk/all",
+                "Eggs": "/Eggs_Production/api/v1/resources/eggs/all"
+            },
             types: [],
             isLoading: true,
             requestedType: "Kharif-Crop",
@@ -23,10 +31,7 @@ class LandingPage extends Component {
     }
 
     async componentDidMount() {
-
-        this.setState({
-            apis: await require('./Apis.json')
-        }, () => this.preProcessAndLoadTheData())
+        await this.preProcessAndLoadTheData()
     }
 
     async preProcessAndLoadTheData() {
@@ -39,21 +44,20 @@ class LandingPage extends Component {
         let id = "Kharif-Crop"
         const url = this.state.apis[id]
 
-        await fetch(url, {
+        let response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
-        }).then(response => response.json())
-            .then(message => receivedResponse = message);
-        /*console.log(response);
+        });
+        console.log(response);
         let status = response.status;
         if (status === 200) {
             receivedResponse = await response.json()
         } else {
             console.log("Error during api call")
-        }*/
+        }
 
         this.setState({
             request: receivedResponse,
@@ -72,14 +76,19 @@ class LandingPage extends Component {
         let receivedResponse = {}
 
         //Load requested Data
-        await fetch(url, {
+        let response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': '*/*'
             }
-        }).then(response => response.json())
-            .then(message => receivedResponse = message);
+        });
+        let status = response.status;
+        if (status === 200) {
+            receivedResponse = await response.json()
+        } else {
+            console.log("Error during api call")
+        }
 
         this.setState({
             request: receivedResponse,
