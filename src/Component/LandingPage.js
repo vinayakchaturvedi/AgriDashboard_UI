@@ -25,7 +25,6 @@ class LandingPage extends Component {
     async componentDidMount() {
 
         this.setState({
-            request: await require('./Kharif_Prod.json'),
             apis: await require('./Apis.json')
         }, () => this.preProcessAndLoadTheData())
     }
@@ -35,6 +34,29 @@ class LandingPage extends Component {
 
         for (let key in this.state.apis)
             typesTemp.push(key)
+
+        let receivedResponse = {}
+        let id = "Kharif-Crop"
+        const url = this.state.apis[id]
+
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': '*/*'
+            }
+        });
+        let status = response.status;
+        if (status === 200) {
+            receivedResponse = await response.json()
+        } else {
+            console.log("Error during api call")
+        }
+
+        this.setState({
+            request: receivedResponse,
+            requestedType: id
+        })
 
         this.setState({
             isLoading: false,
