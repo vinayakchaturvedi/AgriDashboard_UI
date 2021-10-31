@@ -54,7 +54,7 @@ class LandingPage extends Component {
         console.log(response);
         let status = response.status;
         if (status === 200) {
-            receivedResponse = await response.json()
+            receivedResponse = await response.text()
             console.log(receivedResponse);
         } else {
             console.log("Error during api call")
@@ -81,7 +81,7 @@ class LandingPage extends Component {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': '*/*'
+                'Accept': 'application/json'
             }
         });
         let status = response.status;
