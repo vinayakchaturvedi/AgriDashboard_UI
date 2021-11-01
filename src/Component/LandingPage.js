@@ -44,7 +44,7 @@ class LandingPage extends Component {
         let id = "Kharif-Crop"
         const url = this.state.apis[id]
 
-        let response = await fetch(url, {
+        let response = await fetch("https://agri-dashboard.herokuapp.com/Khariff_Prod/api/v1/resources/khariff_prod/all", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
