@@ -2,5 +2,15 @@
   "root": "build/",
   "routes": {
     "/**": "index.html"
+  },
+  "proxies": {
+    "/Kharif-Crop": {
+      "origin": "https://agri-dashboard.herokuapp.com/Khariff_Prod/api/v1/resources/khariff_prod/all"
+    }
+  },
+  "headers": {
+    "/**": {
+      "Access-Control-Allow-Origin": "*"
+    }
   }
 }
