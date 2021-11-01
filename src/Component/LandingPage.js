@@ -42,9 +42,9 @@ class LandingPage extends Component {
 
         let receivedResponse = {}
         let id = "Kharif-Crop"
-        const url = id
+        const url = this.state.apis[id]
 
-        let response = await fetch(url, {
+        let response = await fetch("/api/Khariff_Prod/api/v1/resources/khariff_prod/all", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
