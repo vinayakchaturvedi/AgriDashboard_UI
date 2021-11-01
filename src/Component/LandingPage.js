@@ -10,15 +10,7 @@ class LandingPage extends Component {
         super(props);
         this.state = {
             request: {},
-            apis: {
-                "Seed": "/Seed/api/v1/resources/seed/all",
-                "Kharif-Crop": "/Khariff_Prod/api/v1/resources/khariff_prod/all",
-                "Fertilizer": "/Fertilizer_Consumption/api/v1/resources/fertilizer_consumption/all",
-                "Reservoir": "/Reservoir/api/v1/resources/reservoir/all",
-                "Micro-Irrigation": "/Micro_Irrigation/api/v1/resources/area_under_micro_irrigation/all",
-                "Milk": "/Milk_Prduction/api/v1/resources/milk/all",
-                "Eggs": "/Eggs_Production/api/v1/resources/eggs/all"
-            },
+            apis: {},
             types: [],
             isLoading: true,
             requestedType: "Kharif-Crop",
@@ -31,7 +23,10 @@ class LandingPage extends Component {
     }
 
     async componentDidMount() {
-        await this.preProcessAndLoadTheData()
+
+        this.setState({
+            apis: await require('./Apis.json')
+        }, () => this.preProcessAndLoadTheData())
     }
 
     async preProcessAndLoadTheData() {
@@ -44,7 +39,7 @@ class LandingPage extends Component {
         let id = "Kharif-Crop"
         const url = this.state.apis[id]
 
-        let response = await fetch("/api/Khariff_Prod/api/v1/resources/khariff_prod/all", {
+        let response = await fetch("/api/" + url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +49,7 @@ class LandingPage extends Component {
         console.log(response);
         let status = response.status;
         if (status === 200) {
-            receivedResponse = await response.text()
+            receivedResponse = await response.json()
             console.log(receivedResponse);
         } else {
             console.log("Error during api call")
@@ -62,10 +57,7 @@ class LandingPage extends Component {
 
         this.setState({
             request: receivedResponse,
-            requestedType: id
-        })
-
-        this.setState({
+            requestedType: id,
             isLoading: false,
             types: typesTemp
         })
@@ -77,7 +69,7 @@ class LandingPage extends Component {
         let receivedResponse = {}
 
         //Load requested Data
-        let response = await fetch(url, {
+        let response = await fetch("/api/" + url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
