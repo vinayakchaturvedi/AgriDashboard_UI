@@ -247,6 +247,7 @@ class GenerateCharts extends Component {
                     key={index}
                     style={{
                         color: this.state.yearsForPieChart.includes(year)
+                        && this.state.viewType === "pie"
                             ? "#ffffff" : "#000000",
                     }}
                     onClick={this.tableHeaderHandleClick}
@@ -261,6 +262,7 @@ class GenerateCharts extends Component {
                         style={{
                             backgroundColor:
                                 this.state.statesForLineChart.includes(details.StateName)
+                                    && this.state.viewType === "line"
                                     ? "#1e621c" : "#009879",
                             color: "#ffffff"
                         }}
