@@ -5,7 +5,7 @@
   },
   "proxies": {
     "/Khariff_Prod/api/v1/resources/khariff_prod/all": {
-      "origin": "https://agri-dashboard.herokuapp.com/"
+      "origin": "https://agri-dashboard.herokuapp.com/Khariff_Prod/api/v1/resources/khariff_prod/all"
     }
   }
 }
