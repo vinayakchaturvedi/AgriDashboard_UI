@@ -28,7 +28,7 @@ class GenerateCharts extends Component {
         this.createLineChart = this.createLineChart.bind(this);
     }
 
-    
+
     componentWillReceiveProps(nextProps) {
         this.setState({
             dataset: nextProps.dataset,
@@ -245,6 +245,10 @@ class GenerateCharts extends Component {
             (year, index) =>
                 <th
                     key={index}
+                    style={{
+                        color: this.state.yearsForPieChart.includes(year)
+                            ? "#ffffff" : "#000000",
+                    }}
                     onClick={this.tableHeaderHandleClick}
                     id={year}
                 >{year}</th>
@@ -254,6 +258,12 @@ class GenerateCharts extends Component {
             (details, index) =>
                 <tr key={index}>
                     <td
+                        style={{
+                            backgroundColor:
+                                this.state.statesForLineChart.includes(details.StateName)
+                                    ? "#1e621c" : "#009879",
+                            color: "#ffffff"
+                        }}
                         onClick={this.tableRowStatesHandleClick}
                         id={details.StateName}
                     >
