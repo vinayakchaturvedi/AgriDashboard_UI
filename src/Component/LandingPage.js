@@ -39,7 +39,7 @@ class LandingPage extends Component {
         let id = "Kharif-Crop"
         const url = this.state.apis[id]
 
-        let response = await fetch("/api/" + url, {
+        let response = await fetch("/API" + url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ class LandingPage extends Component {
         let receivedResponse = {}
 
         //Load requested Data
-        let response = await fetch("/api/" + url, {
+        let response = await fetch("/API" + url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
