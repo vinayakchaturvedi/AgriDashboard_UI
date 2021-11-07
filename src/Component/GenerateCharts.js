@@ -75,10 +75,10 @@ class GenerateCharts extends Component {
         )
     }
 
-    findValueOfProperty(obj, propertyName){
+    findValueOfProperty(obj, propertyName) {
         let reg = new RegExp(propertyName, "i"); // "i" to make it case insensitive
         return Object.keys(obj).reduce((result, key) => {
-            if( reg.test(key) ) result.push(obj[key]);
+            if (reg.test(key)) result.push(obj[key]);
             return result;
         }, []);
     }
@@ -278,7 +278,7 @@ class GenerateCharts extends Component {
                         style={{
                             backgroundColor:
                                 this.state.statesForLineChart.includes(details.StateName)
-                                    && this.state.viewType === "line"
+                                && this.state.viewType === "line"
                                     ? "#1e621c" : "#009879",
                             color: "#ffffff"
                         }}
@@ -316,17 +316,18 @@ class GenerateCharts extends Component {
 
         return (
             <div className="main_content">
-                <div className="Graph">
-                    <div style={{display: this.state.viewType === "pie" ? "block" : "none"}}>
-                        {canvasListForPie}
-                    </div>
-                    <div style={{display: this.state.viewType === "line" ? "block" : "none"}}>
-                        <canvas
-                            id={"LineChart"}
-                            width="20%"
-                            height="4%"
-                        />
-                    </div>
+                <div className="Graph"
+                     style={{display: this.state.yearsForPieChart.length !== 0 && this.state.viewType === "pie" ? "block" : "none"}}>
+                    {canvasListForPie}
+                    <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
+                </div>
+                <div className="Graph"
+                     style={{display: this.state.statesForLineChart.length !== 0 && this.state.viewType === "line" ? "block" : "none"}}>
+                    <canvas
+                        id={"LineChart"}
+                        width="20%"
+                        height="4%"
+                    />
                     <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
                 </div>
                 <div className="Tables">
