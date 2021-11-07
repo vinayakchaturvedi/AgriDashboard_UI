@@ -7,7 +7,7 @@ import e1 from "../images/E1.PNG";
 import e2 from "../images/E2.PNG";
 import e3 from "../images/E3.PNG";
 import e4 from "../images/E4.PNG";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 class NavBar extends Component {
 
@@ -57,9 +57,8 @@ class NavBar extends Component {
                                 <img style={{paddingLeft: "15px"}} src={e2} alt=""/>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e3} onClick={
-                                    this.handleClick
-                                } alt=""/>
+                                <Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}
+                                                                          alt=""/></Link>
                             </li>
                             <li>
                                 <img style={{paddingLeft: "75px"}} src={e4} alt=""/>

@@ -95,15 +95,6 @@ function IndiaMap({...rest}) {
 
     const [tooltipContent, setTooltipContent] = useState('');
     const [data, setData] = useState(getHeatMapData());
-    const [dataset, setDataset] = useState(rest.history.location.state.dataset)
-
-    console.log(dataset)
-
-    if (rest.history.location.state === undefined) {
-        return <div>
-            Error
-        </div>;
-    }
 
     const gradientData = {
         fromColor: COLOR_RANGE[0],
