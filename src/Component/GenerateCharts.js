@@ -13,11 +13,13 @@ class GenerateCharts extends Component {
             name: props.name,
             viewType: props.viewType,
             yearsForPieChart: [],
-            statesForLineChart: []
+            statesForLineChart: [],
+            colorCoding: {}
         }
 
         this.getRandomColor = this.getRandomColor.bind(this);
         this.loadData = this.loadData.bind(this);
+        this.findValueOfProperty = this.findValueOfProperty.bind(this);
 
         this.tableHeaderHandleClick = this.tableHeaderHandleClick.bind(this);
         this.tableRowStatesHandleClick = this.tableRowStatesHandleClick.bind(this);
@@ -39,8 +41,10 @@ class GenerateCharts extends Component {
         }, () => this.loadData());
     }
 
-    componentDidMount() {
-        this.loadData()
+    async componentDidMount() {
+        this.setState({
+            colorCoding: await require('../Utility/ColorCoding.json')
+        }, () => this.loadData())
     }
 
     loadData() {
@@ -71,6 +75,13 @@ class GenerateCharts extends Component {
         )
     }
 
+    findValueOfProperty(obj, propertyName){
+        let reg = new RegExp(propertyName, "i"); // "i" to make it case insensitive
+        return Object.keys(obj).reduce((result, key) => {
+            if( reg.test(key) ) result.push(obj[key]);
+            return result;
+        }, []);
+    }
 
     getRandomColor() {
         let letters = '0123456789ABCDEF'.split('');
@@ -103,7 +114,7 @@ class GenerateCharts extends Component {
 
                     tempData.push(obj[currYear])
                     if (i === 0) {
-                        let color = this.getRandomColor()
+                        let color = this.getRandomColor(); //this.findValueOfProperty(this.state.colorCoding, obj.StateName)
                         chartColors.push(color)
 
                         labelMap[obj.StateName] = color;
@@ -116,10 +127,15 @@ class GenerateCharts extends Component {
                     type: "pie",
                     options: {
                         legend: {
-                            display: false,
-                            position: 'right',
-                            align: 'end'
-                        }
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            fontColor: 'rgb(99 99 99)',
+                            fontSize: 20,
+                            text: currYear,
+                            position: 'bottom'
+                        },
                     },
                     data: {
                         labels: labels,
@@ -285,7 +301,7 @@ class GenerateCharts extends Component {
 
             canvasListForPie.push(
                 <div style={{
-                    width: "30%", height: "50%"
+                    width: "32%", height: "50%"
                 }} className="pieCharts"
                      key={i}>
                     <canvas
@@ -312,9 +328,6 @@ class GenerateCharts extends Component {
                         />
                     </div>
                     <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
-                    <h3 style={{color: "rgb(99 99 99)", display: this.state.viewType === "pie" ? "block" : "none"}}>
-                        (Years: {title})
-                    </h3>
                 </div>
                 <div className="Tables">
                     <table className="styled-table">
