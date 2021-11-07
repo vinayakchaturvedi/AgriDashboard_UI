@@ -37,13 +37,13 @@ class NavBar extends Component {
                         <ul>
                             <li><h3>Toggle View</h3></li>
                             <li>
-                                <img onClick={this.state.toggleViewHandler} id="line" src={v1}/>
+                                <img onClick={this.state.toggleViewHandler} id="line" src={v1} alt=""/>
                             </li>
                             <li>
-                                <img src={v3}/>
+                                <img src={v3} alt=""/>
                             </li>
                             <li>
-                                <img onClick={this.state.toggleViewHandler} id="pie" src={v2}/>
+                                <img onClick={this.state.toggleViewHandler} id="pie" src={v2} alt=""/>
                             </li>
                         </ul>
                     </label>
@@ -51,18 +51,18 @@ class NavBar extends Component {
                     <label className="RightLabel">
                         <ul>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e1}/>
+                                <img style={{paddingLeft: "15px"}} src={e1} alt=""/>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e2}/>
+                                <img style={{paddingLeft: "15px"}} src={e2} alt=""/>
                             </li>
                             <li>
                                 <img style={{paddingLeft: "15px"}} src={e3} onClick={
                                     this.handleClick
-                                }/>
+                                } alt=""/>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "75px"}} src={e4}/>
+                                <img style={{paddingLeft: "75px"}} src={e4} alt=""/>
                             </li>
                         </ul>
                     </label>
