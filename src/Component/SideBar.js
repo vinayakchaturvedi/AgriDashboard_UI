@@ -7,8 +7,18 @@ class SideBar extends Component {
         super();
         this.state = {
             types: props.types,
-            handler: props.handler
+            handler: props.handler,
+            crop: "Kharif-Crop"
         }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(event) {
+        const id = event.target.id;
+
+        this.setState({
+            crop: id
+        }, () => this.state.handler(event))
     }
 
 
@@ -16,10 +26,17 @@ class SideBar extends Component {
 
         let availableTypes = this.state.types.map(
             (type, index) =>
-                <li onClick={this.state.handler}
+                <li onClick={this.handleClick}
                     key={index}
-                    id={type}>
-                    <div id={type}><i className="fas"/>{type}</div>
+                    id={type}
+                    style={{
+                        backgroundColor: this.state.crop === type ? "#b9e2c0" : "#609b74"
+                    }}
+                >
+                    <div
+                        id={type}
+                        style={{color: this.state.crop === type ? "#080808" : "#ffffff"}}
+                    ><i className="fas"/>{type}</div>
                 </li>
         )
 
