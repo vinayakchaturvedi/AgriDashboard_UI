@@ -294,10 +294,8 @@ class GenerateCharts extends Component {
         )
 
         let canvasListForPie = [];
-        let title = "";
 
         for (let i = 0; i < this.state.yearsForPieChart.length; i++) {
-            title = title + this.state.yearsForPieChart[i] + ", "
 
             canvasListForPie.push(
                 <div style={{
@@ -312,23 +310,26 @@ class GenerateCharts extends Component {
                 </div>
             )
         }
-        title = title.substring(0, title.length - 2)
 
         return (
             <div className="main_content">
                 <div className="Graph"
-                     style={{display: this.state.yearsForPieChart.length !== 0 && this.state.viewType === "pie" ? "block" : "none"}}>
+                     style={{display: this.state.viewType === "pie" ? "block" : "none"}}>
                     {canvasListForPie}
                     <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
+                    <h2 style={{display: this.state.yearsForPieChart.length === 0 ? "block" : "none"}}>Please select a year</h2>
                 </div>
                 <div className="Graph"
-                     style={{display: this.state.statesForLineChart.length !== 0 && this.state.viewType === "line" ? "block" : "none"}}>
+                     style={{display: this.state.viewType === "line" ? "block" : "none"}}>
+                    <div style={{display: this.state.statesForLineChart.length !== 0 ? "block" : "none"}}>
                     <canvas
                         id={"LineChart"}
                         width="20%"
                         height="4%"
                     />
+                    </div>
                     <h1 style={{color: "#4b4559"}}>{this.state.name}</h1>
+                    <h2 style={{display: this.state.statesForLineChart.length === 0 ? "block" : "none"}}>Please select an state</h2>
                 </div>
                 <div className="Tables">
                     <table className="styled-table">
