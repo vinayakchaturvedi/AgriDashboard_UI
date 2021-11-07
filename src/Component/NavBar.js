@@ -15,10 +15,12 @@ class NavBar extends Component {
         super(props);
         this.state = {
             toggleViewHandler: props.toggleViewHandler,
-            dataset: props.dataset
+            dataset: props.dataset,
+            id: "pie"
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickLeft = this.handleClickLeft.bind(this);
     }
 
     handleClick() {
@@ -29,21 +31,39 @@ class NavBar extends Component {
         )
     }
 
+    handleClickLeft(event) {
+        const id = event.target.id
+
+        this.setState({
+            id: id
+        }, () => this.state.toggleViewHandler(event))
+    }
+
     render() {
         return (
-            <div className="NavBar">
+            <div className="NavBar hover">
                 <nav>
                     <label className="LeftLabel">
                         <ul>
                             <li><h3>Toggle View</h3></li>
                             <li>
-                                <img onClick={this.state.toggleViewHandler} id="line" src={v1} alt=""/>
+                                <figure>
+                                    <img
+                                        style={{
+                                            transform: this.state.id === "line" ? "scale(1.4)" : "scale(1)"
+                                        }}
+                                        onClick={this.handleClickLeft} id="line" src={v1} alt=""/>
+                                </figure>
                             </li>
                             <li>
                                 <img src={v3} alt=""/>
                             </li>
                             <li>
-                                <img onClick={this.state.toggleViewHandler} id="pie" src={v2} alt=""/>
+                                <figure>
+                                    <img
+                                        style={{transform: this.state.id === "pie" ? "scale(1.4)" : "scale(1)"}}
+                                        onClick={this.handleClickLeft} id="pie" src={v2} alt=""/>
+                                </figure>
                             </li>
                         </ul>
                     </label>
@@ -51,17 +71,25 @@ class NavBar extends Component {
                     <label className="RightLabel">
                         <ul>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e1} alt=""/>
+                                <figure>
+                                    <img style={{paddingLeft: "15px"}} src={e1} alt=""/>
+                                </figure>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "15px"}} src={e2} alt=""/>
+                                <figure>
+                                    <img style={{paddingLeft: "15px"}} src={e2} alt=""/>
+                                </figure>
                             </li>
                             <li>
-                                <Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}
-                                                                          alt=""/></Link>
+                                <figure>
+                                    <Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}
+                                                                              alt=""/></Link>
+                                </figure>
                             </li>
                             <li>
-                                <img style={{paddingLeft: "75px"}} src={e4} alt=""/>
+                                <figure>
+                                    <img style={{paddingLeft: "75px"}} src={e4} alt=""/>
+                                </figure>
                             </li>
                         </ul>
                     </label>

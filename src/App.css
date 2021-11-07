@@ -30,6 +30,10 @@ nav ul li {
     margin: 3px;
 }
 
+.SideBar li:hover{
+    cursor: pointer;
+}
+
 nav ul li h3 {
     width: 99%;
     text-align: center;
@@ -196,4 +200,16 @@ nav ul li h3 {
 
 .mt16 {
     margin-top: 16px;
+}
+
+.hover figure img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.hover figure:hover img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    cursor: pointer;
 }
