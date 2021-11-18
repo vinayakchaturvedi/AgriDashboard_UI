@@ -14,12 +14,14 @@ class LandingPage extends Component {
             types: [],
             isLoading: true,
             requestedType: "Kharif-Crop",
-            viewType: "pie"
+            viewType: "pie",
+            sideBarView:true
         }
 
         this.preProcessAndLoadTheData = this.preProcessAndLoadTheData.bind(this)
         this.handleClickForProductType = this.handleClickForProductType.bind(this)
         this.handleClickForToggleView = this.handleClickForToggleView.bind(this)
+        this.handleSideBarForPopUp = this.handleSideBarForPopUp.bind(this)
     }
 
     async componentDidMount() {
@@ -96,6 +98,14 @@ class LandingPage extends Component {
         })
     }
 
+    handleSideBarForPopUp(){
+        const prevSideBarView = this.state.sideBarView;
+        this.setState(prevState=>({
+            ...prevState,
+            sideBarView: !prevSideBarView
+        }))
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -108,11 +118,14 @@ class LandingPage extends Component {
             <div className="LandingPage">
                 <NavBar
                     toggleViewHandler={this.handleClickForToggleView}
+                    sideBarHandler={this.handleSideBarForPopUp}
                     dataset={this.state.request}/>
 
+                {this.state.sideBarView?
                 <SideBar
                     types={this.state.types}
-                    handler={this.handleClickForProductType}/>
+                    handler={this.handleClickForProductType}
+                    />:""}
 
                 <GenerateCharts
                     dataset={this.state.request}
