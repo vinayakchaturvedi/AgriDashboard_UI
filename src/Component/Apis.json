@@ -5,5 +5,6 @@
   "Reservoir": "/Reservoir/api/v1/resources/reservoir/all",
   "Micro-Irrigation": "/Micro_Irrigation/api/v1/resources/area_under_micro_irrigation/all",
   "Milk": "/Milk_Prduction/api/v1/resources/milk/all",
-  "Eggs": "/Eggs_Production/api/v1/resources/eggs/all"
+  "Eggs": "/Eggs_Production/api/v1/resources/eggs/all",
+  "Rainfall": "/Rainfall/api/v1/resources/rain_fall_data/all"
 }
