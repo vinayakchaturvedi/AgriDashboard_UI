@@ -8,6 +8,7 @@ import e2 from "../images/E2.PNG";
 import e3 from "../images/E3.PNG";
 import e4 from "../images/E4.PNG";
 import {Link, withRouter} from "react-router-dom";
+import Popup from "./Popup";
 
 class NavBar extends Component {
 
@@ -16,11 +17,14 @@ class NavBar extends Component {
         this.state = {
             toggleViewHandler: props.toggleViewHandler,
             dataset: props.dataset,
-            id: "pie"
+            id: "pie",
+            popUpTrigger: false,
+            sideBarHandler:props.sideBarHandler
         }
 
         this.handleClick = this.handleClick.bind(this);
         this.handleClickLeft = this.handleClickLeft.bind(this);
+        this.handlePopUp = this.handlePopUp.bind(this);
     }
 
     handleClick() {
@@ -37,6 +41,17 @@ class NavBar extends Component {
         this.setState({
             id: id
         }, () => this.state.toggleViewHandler(event))
+    }
+
+    handlePopUp(){
+        //console.log("called")
+        console.log(this.state.popUpTrigger);
+        const prevTrigger = this.state.popUpTrigger;
+        this.setState(prevState =>({
+            ...prevState,
+            popUpTrigger : !prevTrigger
+        }))
+        this.state.sideBarHandler();
     }
 
     render() {
@@ -77,14 +92,19 @@ class NavBar extends Component {
                             </li>
                             <li>
                                 <figure>
-                                    <img style={{paddingLeft: "15px"}} src={e2} alt=""/>
+                                    <img style={{paddingLeft: "15px",paddingRight: "15px"}} src={e2} alt=""/>
                                 </figure>
                             </li>
                             <li>
-                                <figure>
-                                    <Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}
-                                                                              alt=""/></Link>
-                                </figure>
+
+                                    {/*<Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}*/}
+                                    {/*                                          alt=""/></Link>*/}
+                                    <button style={{border:"0px"}} onClick={this.handlePopUp} >
+                                        <img  src={e3} alt=""/>
+                                    </button>
+                                    <Popup trigger={this.state.popUpTrigger} sideBarHandler={this.state.sideBarHandler}>
+                                    </Popup>
+
                             </li>
                             <li>
                                 <figure>
