@@ -3,7 +3,7 @@ import "../App.css";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import GenerateCharts from "./GenerateCharts";
-
+import Footer from './Footer';
 class LandingPage extends Component {
 
     constructor(props) {
@@ -133,6 +133,7 @@ class LandingPage extends Component {
                     viewType={this.state.viewType}
                 />
 
+                <Footer/>
             </div>
         )
     }
