@@ -7,6 +7,7 @@ import e1 from "../images/E1.PNG";
 import e2 from "../images/E2.PNG";
 import e3 from "../images/E3.PNG";
 import e4 from "../images/E4.PNG";
+import nitiLogo from "../images/NITI-Aayog-logo.png"
 import {Link, withRouter} from "react-router-dom";
 import Popup from "./Popup";
 
@@ -82,7 +83,8 @@ class NavBar extends Component {
                             </li>
                         </ul>
                     </label>
-                    <label className="logo">NITI Aayog Dashboard</label>
+                    <label className="logo"> <img src={nitiLogo} style={{height:"90px",paddingRight:"20px",marginLeft:"200px",marginTop:"5px"}}/></label>
+                    {/*<label className="logo">Niti Aayog Dashboard</label>*/}
                     <label className="RightLabel">
                         <ul>
                             <li>
