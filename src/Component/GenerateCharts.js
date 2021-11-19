@@ -224,6 +224,7 @@ class GenerateCharts extends Component {
     }
 
     tableHeaderHandleClick(event) {
+        if(this.state.viewType=='line') return;
         const id = event.target.id
         let presentYears = this.state.yearsForPieChart;
         if (presentYears.includes(id)) presentYears.splice(presentYears.indexOf(id), 1);
@@ -237,6 +238,7 @@ class GenerateCharts extends Component {
     }
 
     tableRowStatesHandleClick(event) {
+        if(this.state.viewType=='pie') return;
         const id = event.target.id;
         let presentStates = this.state.statesForLineChart;
         if (presentStates.includes(id)) presentStates.splice(presentStates.indexOf(id), 1);
