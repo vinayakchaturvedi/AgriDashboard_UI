@@ -40,6 +40,7 @@ class SideBar extends Component {
                 </li>
         )
 
+
         return (
             <div className="SideBar">
                 <div className="wrapper">
