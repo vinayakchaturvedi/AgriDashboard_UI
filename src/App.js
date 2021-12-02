@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import IndiaMap from "./Component/IndiaMap";
 import LandingPage from "./Component/LandingPage";
+import Register from "./Component/register";
+import Login from "./Component/login";
 
 
 class App extends Component {
@@ -14,6 +16,11 @@ class App extends Component {
                     </Route>
                     <Route exact path='/IndiaMap' component={IndiaMap}>
                     </Route>
+                    <Route exact path='/Register' component={Register}>
+                    </Route>
+                    <Route exact path='/Login' component={Login}>
+                    </Route>
+
                 </Switch>
             </Router>
         )
