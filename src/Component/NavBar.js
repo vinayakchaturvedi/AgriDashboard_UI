@@ -9,7 +9,8 @@ import e3 from "../images/E3.PNG";
 import e4 from "../images/E4.PNG";
 import nitiLogo from "../images/NITI-Aayog-logo.png"
 import {Link, withRouter} from "react-router-dom";
-import Popup from "./Popup";
+import IndiaMapPopup from "./IndiaMapPopup";
+import SummaryPopup from "./SummaryPopup"
 
 class NavBar extends Component {
 
@@ -23,7 +24,6 @@ class NavBar extends Component {
             sideBarHandler:props.sideBarHandler
         }
 
-        this.handleClick = this.handleClick.bind(this);
         this.handleClickLeft = this.handleClickLeft.bind(this);
         this.handlePopUp = this.handlePopUp.bind(this);
     }
@@ -89,7 +89,12 @@ class NavBar extends Component {
                         <ul>
                             <li>
                                 <figure>
-                                    <img style={{paddingLeft: "15px"}} src={e1} alt=""/>
+                                    <button style={{border:"0px"}} onClick={this.handlePopUp} >
+                                        <img style={{paddingLeft: "15px"}} src={e1} alt=""/>
+                                    </button>
+                                    <SummaryPopup trigger={this.state.popUpTrigger} sideBarHandler={this.state.sideBarHandler}>
+                                    </SummaryPopup>
+
                                 </figure>
                             </li>
                             <li>
@@ -102,10 +107,10 @@ class NavBar extends Component {
                                     {/*<Link to="/IndiaMap" target="_blank"><img style={{paddingLeft: "15px"}} src={e3}*/}
                                     {/*                                          alt=""/></Link>*/}
                                     <button style={{border:"0px"}} onClick={this.handlePopUp} >
-                                        <img  src={e3} alt=""/>
+                                        <img style={{paddingLeft: "15px"}} src={e3} alt=""/>
                                     </button>
-                                    <Popup trigger={this.state.popUpTrigger} sideBarHandler={this.state.sideBarHandler}>
-                                    </Popup>
+                                    <IndiaMapPopup trigger={this.state.popUpTrigger} sideBarHandler={this.state.sideBarHandler}>
+                                    </IndiaMapPopup>
 
                             </li>
                             <li>

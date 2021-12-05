@@ -30,7 +30,7 @@ nav ul li {
     margin: 3px;
 }
 
-.SideBar li:hover{
+.SideBar li:hover {
     cursor: pointer;
 }
 
@@ -118,6 +118,10 @@ nav ul li h3 {
     margin: 2%;
     color: #717171;
     line-height: 25px;
+}
+
+.SummaryLineChart .Tables {
+
 }
 
 .styled-table {
@@ -212,8 +216,51 @@ nav ul li h3 {
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
+
 .hover figure:hover img {
     -webkit-transform: scale(1.3);
     transform: scale(1.3);
     cursor: pointer;
+}
+
+.registerButton {
+    margin-top: 5px;
+    margin-left: 250px;
+    text-align: center;
+    color: #ffffff;
+    background-image: linear-gradient(to left, grey, darkslategrey);
+    background-color: #6f6e6e;
+    font-size: 22px;
+    width: 250px;
+    line-height: 40px;
+    padding: 6px 22px;
+    border-radius: 25px;
+}
+
+.registerButton:hover {
+    background-color: white;
+    border: white 2px solid;
+}
+
+.cropList select {
+    background-color: #0563af;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+
+
+.cropList:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cropList select option {
+    padding: 30px;
 }
