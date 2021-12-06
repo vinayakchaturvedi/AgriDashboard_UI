@@ -32,7 +32,6 @@ class SelectCropSummaryPage3 extends Component {
                 apis: await require('./Apis.json')
             }, () => this.processData())
         } else {
-            localStorage.clear();
             localStorage.setItem('rainfall', JSON.stringify(this.state.rainfall));
             localStorage.setItem('rainfallStatesForLineChart', JSON.stringify(this.state.rainfallStatesForLineChart));
             localStorage.setItem('yearsForRainfall', JSON.stringify(this.state.yearsForRainfall));
@@ -192,8 +191,9 @@ class SelectCropSummaryPage3 extends Component {
 
         return (
             <div className="SummaryLineChart3">
-                <h2 style={{marginBottom: "4%", marginLeft: "2%"}}>Summary</h2>
-                <h3 style={{marginBottom: "2%", marginLeft: "2%"}}>Choose Crop for comparison</h3>
+                <h2 style={{marginBottom: "1%", marginLeft: "2%"}}>Summary</h2>
+                <h3 style={{marginLeft: "2%"}}>Choose Crop for comparison</h3>
+                <h5 style={{marginLeft: "2%"}}>(Select At max 3 states)</h5>
                 <div className="container">
                 <div
                     className="cropList one">
@@ -223,7 +223,9 @@ class SelectCropSummaryPage3 extends Component {
                 </div>
                 </div>
                 <div style={{position: "absolute", left: "35%", textAlign: "center"}}>
-                    <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                    <button className="registerButton"
+                            disabled={this.state.cropStatesForLineChart.length === 0}
+                            onClick={this.handleButtonClick}>Next</button>
                 </div>
             </div>
         )

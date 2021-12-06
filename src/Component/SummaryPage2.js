@@ -27,7 +27,6 @@ class SummaryPage2 extends Component {
                 isLoading: false
             }, () => this.generateLineChart())
         } else {
-            localStorage.clear();
             localStorage.setItem('rainfall', JSON.stringify(this.state.rainfall));
             localStorage.setItem('statesForLineChart', JSON.stringify(this.state.statesForLineChart));
             localStorage.setItem('years', JSON.stringify(this.state.years));

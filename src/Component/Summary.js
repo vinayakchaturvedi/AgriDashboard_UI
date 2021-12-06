@@ -123,8 +123,10 @@ class Summary extends Component {
 
         return (
             <div className="SummaryLineChart">
-                <h2 style={{marginBottom: "4%"}}>Summary</h2>
-                <h3 style={{marginBottom: "2%"}}>Choose Rainfall Chart</h3>
+                <h2 style={{marginBottom: "1%"}}>Summary</h2>
+                <h3>Choose Crop for comparison</h3>
+                <h5>(Select At max 3 states)</h5>
+
                 <div style={{overflow: "scroll", width: "77%", height: "500px"}}>
                     <div className="Tables">
                         <table className="styled-table">
@@ -141,7 +143,9 @@ class Summary extends Component {
                     </div>
                 </div>
                 <div style={{position: "absolute", left: "43%", textAlign: "center"}}>
-                    <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                    <button className="registerButton"
+                            disabled={this.state.statesForLineChart.length === 0}
+                            onClick={this.handleButtonClick}>Next</button>
                 </div>
             </div>
         )
