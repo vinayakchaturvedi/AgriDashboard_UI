@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {Chart} from "react-chartjs-2";
 import {withRouter} from "react-router-dom";
 import LoadingPage from "./LoadingPage";
@@ -34,6 +34,7 @@ class SelectCropSummaryPage4 extends Component {
                 cropDataset: JSON.parse(localStorage.getItem('cropDataset')),
                 cropStatesForLineChart: JSON.parse(localStorage.getItem('cropStatesForLineChart')),
                 yearsForCrop: JSON.parse(localStorage.getItem('yearsForCrop')),
+                requestedType: JSON.parse(localStorage.getItem('requestedType')),
                 isLoading: false
             }, () => this.generateLineChart())
         } else {
@@ -44,6 +45,7 @@ class SelectCropSummaryPage4 extends Component {
             localStorage.setItem('cropDataset', JSON.stringify(this.state.cropDataset));
             localStorage.setItem('cropStatesForLineChart', JSON.stringify(this.state.cropStatesForLineChart));
             localStorage.setItem('yearsForCrop', JSON.stringify(this.state.yearsForCrop));
+            localStorage.setItem('requestedType', JSON.stringify(this.state.requestedType));
             this.setState({
                 isLoading: false
             }, () => this.generateLineChart());
@@ -225,6 +227,7 @@ class SelectCropSummaryPage4 extends Component {
 
         return (
             <div>
+                <h2 style={{marginBottom: "1%"}}>Summary</h2>
                 <div className="Graph">
                     <canvas
                         id={"LineChartForRainfall"}

@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {Chart} from "react-chartjs-2";
 import {withRouter} from "react-router-dom";
 import LoadingPage from "./LoadingPage";
@@ -132,15 +132,17 @@ class SummaryPage2 extends Component {
         states = states.substring(0, states.length - 2);
 
         return (
-            <div>
-                <div className="Graph">
+            <div className="SummaryLineChart">
+                <h2 style={{marginBottom: "4%"}}>Summary</h2>
+                <h3 style={{marginBottom: "2%"}}>Choose Rainfall Chart</h3>
+                <div className="SummaryGraph">
                     <canvas
                         id={"LineChart"}
-                        width="20%"
+                        width="15%"
                         height="4%"
                     />
                 </div>
-                <div style={{textAlign: "center"}}>
+                <div style={{position: "absolute", left: "35%", textAlign: "center"}}>
                     <h2>Rain fall in {states}</h2>
                     <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
                 </div>

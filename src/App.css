@@ -120,8 +120,18 @@ nav ul li h3 {
     line-height: 25px;
 }
 
-.SummaryLineChart .Tables {
+.SummaryLineChart {
+    align-content: center;
+    margin-top: 6%;
+    margin-left: 20%;
+    width: 80%;
+}
 
+.SummaryLineChart3 {
+    align-content: center;
+    margin-top: 6%;
+    margin-left: 10%;
+    width: 80%;
 }
 
 .styled-table {
@@ -225,7 +235,7 @@ nav ul li h3 {
 
 .registerButton {
     margin-top: 5px;
-    margin-left: 250px;
+    margin-left: 50px;
     text-align: center;
     color: #ffffff;
     background-image: linear-gradient(to left, grey, darkslategrey);
@@ -243,7 +253,7 @@ nav ul li h3 {
 }
 
 .cropList select {
-    background-color: #0563af;
+    background-color: #009879;
     color: white;
     padding: 12px;
     width: 250px;
@@ -263,4 +273,23 @@ nav ul li h3 {
 
 .cropList select option {
     padding: 30px;
+}
+
+.SummaryGraph {
+    width: 80%;
+}
+
+.container {
+    margin: auto;
+    padding: 10px;
+}
+
+.one {
+    float: left;
+    margin-top: 2%;
+    margin-right: 5%;
+}
+
+.two {
+    margin-left: 15%;
 }

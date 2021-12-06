@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {withRouter} from "react-router-dom";
 import LoadingPage from "./LoadingPage";
 
@@ -191,9 +191,12 @@ class SelectCropSummaryPage3 extends Component {
             </option>)
 
         return (
-            <div className="SummaryLineChart">
+            <div className="SummaryLineChart3">
+                <h2 style={{marginBottom: "4%", marginLeft: "2%"}}>Summary</h2>
+                <h3 style={{marginBottom: "2%", marginLeft: "2%"}}>Choose Crop for comparison</h3>
+                <div className="container">
                 <div
-                    className="cropList">
+                    className="cropList one">
                     <select
                         name="requestedType"
                         value={this.state.requestedType}
@@ -202,24 +205,26 @@ class SelectCropSummaryPage3 extends Component {
                         {cropList}
                     </select>
                     <br/>
-                    <label
-                        style={{display: this.state.queriedStockAvailableQuantity !== 0 ? "block" : "none"}}
-                    >Available Quantity: {this.state.queriedStockAvailableQuantity}</label>
                 </div>
-                <div className="Tables">
-                    <table className="styled-table">
-                        <thead>
-                        <tr>
-                            <th>State</th>
-                            {years}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {content}
-                        </tbody>
-                    </table>
+                <div style={{overflow: "scroll", width: "77%", height: "500px"}} className="two">
+                    <div className="Tables">
+                        <table className="styled-table">
+                            <thead>
+                            <tr>
+                                <th>State</th>
+                                {years}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {content}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                </div>
+                <div style={{position: "absolute", left: "35%", textAlign: "center"}}>
+                    <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                </div>
             </div>
         )
     }

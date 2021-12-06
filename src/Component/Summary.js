@@ -124,21 +124,25 @@ class Summary extends Component {
         return (
             <div className="SummaryLineChart">
                 <h2 style={{marginBottom: "4%"}}>Summary</h2>
-                <h3 style={{marginBottom: "4%"}}>Choose Rainfall Chart</h3>
-                <div className="Tables">
-                    <table className="styled-table">
-                        <thead>
-                        <tr>
-                            <th>State</th>
-                            {years}
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {content}
-                        </tbody>
-                    </table>
+                <h3 style={{marginBottom: "2%"}}>Choose Rainfall Chart</h3>
+                <div style={{overflow: "scroll", width: "77%", height: "500px"}}>
+                    <div className="Tables">
+                        <table className="styled-table">
+                            <thead>
+                            <tr>
+                                <th>State</th>
+                                {years}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {content}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                <div style={{position: "absolute", left: "43%", textAlign: "center"}}>
+                    <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
+                </div>
             </div>
         )
     }

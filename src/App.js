@@ -8,6 +8,7 @@ import Summary from "./Component/Summary";
 import SummaryPage2 from "./Component/SummaryPage2";
 import SelectCropSummaryPage3 from "./Component/SelectCropSummaryPage3";
 import SelectCropSummaryPage4 from "./Component/SelectCropSummaryPage4";
+import LandingPage from "./Component/LandingPage";
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path='/' component={Summary}>
+                    <Route exact path='/' component={LandingPage}>
                     </Route>
                     <Route exact path='/IndiaMap' component={IndiaMap}>
                     </Route>
@@ -25,6 +26,8 @@ class App extends Component {
                     <Route exact path='/Login' component={Login}>
                     </Route>
                     <Route exact path='/LoadingPage' component={LoadingPage}>
+                    </Route>
+                    <Route exact path='/Summary' component={Summary}>
                     </Route>
                     <Route exact path='/SummaryPage2' component={SummaryPage2}>
                     </Route>
