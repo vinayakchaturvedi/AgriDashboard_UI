@@ -111,6 +111,8 @@ class NavBar extends Component {
                             <li>
                                 <figure>
                                     <img style={{paddingLeft: "75px"}} src={e4} alt=""/>
+                                    <Popup trigger={this.state.popUpTrigger} sideBarHandler={this.state.sideBarHandler}>
+                                    </Popup>
                                 </figure>
                             </li>
                         </ul>

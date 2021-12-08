@@ -4,6 +4,7 @@ import IndiaMap from "./Component/IndiaMap";
 import LandingPage from "./Component/LandingPage";
 import Register from "./Component/register";
 import Login from "./Component/login";
+import VerifyPin from "./Component/VerifyPin";
 
 
 class App extends Component {
@@ -19,6 +20,8 @@ class App extends Component {
                     <Route exact path='/Register' component={Register}>
                     </Route>
                     <Route exact path='/Login' component={Login}>
+                    </Route>
+                    <Route exact path='/VerifyPin' component={VerifyPin}>
                     </Route>
 
                 </Switch>

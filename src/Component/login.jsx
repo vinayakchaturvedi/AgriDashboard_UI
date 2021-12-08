@@ -23,9 +23,8 @@ class Login extends React.Component {
 
     async verifyUser() {
 
-        console.log("Verifying user");
-        //API Call to get student ID for loginHook verification
-        let response = await fetch("/API" + '/Users/api/v1/resources/users/user/' + this.state.name, {
+        console.log("Verifying email confirmation");
+        let email_confirmation_response = await fetch("/API" + '/Users/api/v1/resources/users/email/' + this.state.name, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json;',
@@ -33,34 +32,47 @@ class Login extends React.Component {
             }
         });
 
-        if (response.status === 200) {
-            let result = await response.json();
-            console.log(result);
+        if (email_confirmation_response.status === 200) {
+            let result = await email_confirmation_response.json();
 
-            const hashedPassword = bcrypt.hashSync(this.state.password, '32f8e1d1b9494b8351f8f99cfb58952c')
+            if (result["result"] === "No results found") {
+                console.warn("Wrong email address");
+            }
+            else {
+                if (result["result"][0]["confirmed"] == "True") {
+                    console.warn("VARIFIED EMAIL");
 
-            console.log(hashedPassword);
+                    console.log("Verifying user");
+                    let response = await fetch("/API" + '/Users/api/v1/resources/users/verify/login/' + this.state.name + '/' + this.state.password, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json;',
+                            'Accept': '*/*'
+                        }
+                    });
 
-            // bcrypt.compare(result.password, this.state.password, function (err, res) {
-                
-            //     if (res) {
-            //         // this.props.history.push({
-            //         //     pathname: '/LandingPage',
-            //         //     state: { user: result }
-            //         // })
-            //         console.log("VALID");
-            //     } else {
-            //         // response is OutgoingMessage object that server response http request
-            //         console.log("INVALID");
-            //     }
-            // });
+                    if (response.status === 200) {
+                        let result = await response.json();
+                        console.log(result);
 
+                        if (result["result"] == true) {
+                            this.props.history.push({
+                                pathname: '/',
+                                state: { user: result }
+                            })
+                            console.log("VALID");
+                        }
+                    }
+                    else {
+                        alert("Invalid Credentials");
+                    }
+                }
+                else {
+                    console.warn("NOT VARIFIED");
+                }
+            }
 
         }
-        else {
-            alert("Invalid Credentials");
-        }
-
     }
 
     handleChange(event) {
@@ -88,10 +100,10 @@ class Login extends React.Component {
                     <div className="content">
                         <div className="form">
                             <div className="form-group">
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="username">Email</label>
                                 <input value={this.state.name}
                                     onChange={this.handleChange}
-                                    type="text" name="name" placeholder="Username" />
+                                    type="email" name="name" placeholder="Email" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
