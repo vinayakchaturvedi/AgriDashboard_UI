@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import GenerateCharts from "./GenerateCharts";
 import Footer from './Footer';
+import LoadingPage from "./LoadingPage";
 class LandingPage extends Component {
 
     constructor(props) {
@@ -110,7 +111,7 @@ class LandingPage extends Component {
 
         if (this.state.isLoading) {
             return (
-                <div/>
+                <LoadingPage/>
             )
         }
 

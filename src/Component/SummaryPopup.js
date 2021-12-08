@@ -1,13 +1,14 @@
 import React from 'react'
 import './Popup.css'
-import Register from './register';
-function Popup(props){
+import Summary from "./Summary";
+
+function SummaryPopup(props) {
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
-                <Register/>
+                <Summary/>
             </div>
-        </div>) : "" ;
+        </div>) : "";
 }
 
-export default Popup;
+export default SummaryPopup;

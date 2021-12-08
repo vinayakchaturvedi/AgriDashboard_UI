@@ -1,13 +1,13 @@
 import React from 'react'
 import './Popup.css'
-import Register from './register';
-function Popup(props){
+import IndiaMap from "./IndiaMap";
+function IndiaMapPopup(props){
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
-                <Register/>
+                <IndiaMap/>
             </div>
         </div>) : "" ;
 }
 
-export default Popup;
+export default IndiaMapPopup;

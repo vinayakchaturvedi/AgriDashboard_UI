@@ -1,12 +1,5 @@
 import React from "react";
-// import imglog from "../../llo.png";
-// import "./style.scss";
 import { withRouter } from 'react-router-dom';
-
-//const bcrypt = require('bcrypt');
-
-import bcrypt from 'bcryptjs'
-
 
 class VerifyPin extends React.Component {
 
@@ -23,8 +16,12 @@ class VerifyPin extends React.Component {
 
     async verifyUser() {
 
+        var userEmail = localStorage.getItem('user-email');
+
+        console.warn(userEmail);
+
         console.log("Verifying email confirmation");
-        let pin_confirmation_response1 = await fetch("/API" + '/Users/api/v1/resources/users/update/confirmed/' + this.state.email + '/' + this.state.pin, {
+        let pin_confirmation_response1 = await fetch("/API" + '/Users/api/v1/resources/users/update/confirmed/' + userEmail + '/' + this.state.pin, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json;',
@@ -32,7 +29,7 @@ class VerifyPin extends React.Component {
             }
         });
 
-        let pin_confirmation_response = await fetch("/API" + '/Users/api/v1/resources/users/update/confirmed/' + this.state.email + '/' + this.state.pin, {
+        let pin_confirmation_response = await fetch("/API" + '/Users/api/v1/resources/users/update/confirmed/' + userEmail + '/' + this.state.pin, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json;',
@@ -81,12 +78,12 @@ class VerifyPin extends React.Component {
                     </div>
                     <div className="content">
                         <div className="form">
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label htmlFor="username">Email</label>
                                 <input value={this.state.email}
                                     onChange={this.handleChange}
                                     type="email" name="email" placeholder="Email" />
-                            </div>
+                            </div> */}
                             <div className="form-group">
                                 <label htmlFor="pin">Pin</label>
                                 <input value={this.state.pin}

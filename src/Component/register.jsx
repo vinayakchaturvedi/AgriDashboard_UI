@@ -60,6 +60,8 @@ class Register extends React.Component {
             if (response.status === 200) {
                 let user = await response.json();
                 console.log("Successfully registered the user: ", user);
+                
+                localStorage.setItem('user-email', this.state.email);
                 this.props.history.push({
                     pathname: '/VerifyPin',
                     state: { user: user }
