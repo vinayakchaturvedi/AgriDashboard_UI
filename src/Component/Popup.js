@@ -1,13 +1,14 @@
 import React from 'react'
 import './Popup.css'
 import Register from './register';
-function Popup(props){
+
+function Popup(props) {
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
                 <Register/>
             </div>
-        </div>) : "" ;
+        </div>) : "";
 }
 
 export default Popup;
