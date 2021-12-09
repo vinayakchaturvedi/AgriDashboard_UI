@@ -16,6 +16,7 @@ class Summary extends Component {
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.processData = this.processData.bind(this);
         this.tableRowStatesHandleClick = this.tableRowStatesHandleClick.bind(this);
+        this.handleBackButton = this.handleBackButton.bind(this)
     }
 
     async componentDidMount() {
@@ -64,6 +65,12 @@ class Summary extends Component {
             statesForLineChart: this.state.statesForLineChart,
             rainfall: this.state.rainfall,
             years: this.state.years,
+        })
+    }
+
+    handleBackButton() {
+        this.props.history.push({
+            pathname: '/',
         })
     }
 
@@ -143,6 +150,7 @@ class Summary extends Component {
                     </div>
                 </div>
                 <div style={{position: "absolute", left: "43%", textAlign: "center"}}>
+                    <button className="registerButton" onClick={this.handleBackButton}>Back</button>
                     <button className="registerButton"
                             disabled={this.state.statesForLineChart.length === 0}
                             onClick={this.handleButtonClick}>Next</button>

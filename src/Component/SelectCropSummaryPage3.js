@@ -21,6 +21,7 @@ class SelectCropSummaryPage3 extends Component {
         this.tableRowStatesHandleClick = this.tableRowStatesHandleClick.bind(this)
         this.handleClickForProductType = this.handleClickForProductType.bind(this)
         this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleBackButton = this.handleBackButton.bind(this)
     }
 
     async componentDidMount() {
@@ -140,6 +141,15 @@ class SelectCropSummaryPage3 extends Component {
         })
     }
 
+    handleBackButton() {
+        this.props.history.push({
+            pathname: '/SummaryPage2',
+            statesForLineChart: this.state.rainfallStatesForLineChart,
+            rainfall: this.state.rainfall,
+            years: this.state.yearsForRainfall,
+        })
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -223,6 +233,7 @@ class SelectCropSummaryPage3 extends Component {
                 </div>
                 </div>
                 <div style={{position: "absolute", left: "35%", textAlign: "center"}}>
+                    <button className="registerButton" onClick={this.handleBackButton}>Back</button>
                     <button className="registerButton"
                             disabled={this.state.cropStatesForLineChart.length === 0}
                             onClick={this.handleButtonClick}>Next</button>

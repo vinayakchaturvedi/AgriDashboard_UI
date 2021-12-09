@@ -22,6 +22,7 @@ class SelectCropSummaryPage4 extends Component {
         this.generateLineChartForCrop = this.generateLineChartForCrop.bind(this)
         this.generateLineChart = this.generateLineChart.bind(this)
         this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleBackButton = this.handleBackButton.bind(this)
     }
 
     componentDidMount() {
@@ -54,6 +55,15 @@ class SelectCropSummaryPage4 extends Component {
     handleButtonClick() {
         this.props.history.push({
             pathname: '/',
+        })
+    }
+
+    handleBackButton() {
+        this.props.history.push({
+            pathname: '/SelectCropSummaryPage3',
+            rainfallStatesForLineChart: this.state.rainfallStatesForLineChart,
+            rainfall: this.state.rainfall,
+            years: this.state.yearsForRainfall
         })
     }
 
@@ -244,6 +254,7 @@ class SelectCropSummaryPage4 extends Component {
                 </div>
                 <h2 style={{textAlign: "center"}}>{this.state.requestedType} in {cropStates}</h2>
                 <div style={{textAlign: "center"}}>
+                    <button className="registerButton" onClick={this.handleBackButton}>Back</button>
                     <button className="registerButton" onClick={this.handleButtonClick}>Finish</button>
                 </div>
             </div>

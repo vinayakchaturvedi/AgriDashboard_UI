@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Chart} from "react-chartjs-2";
 import {withRouter} from "react-router-dom";
 import LoadingPage from "./LoadingPage";
+import {useHistory} from "react-router-dom";
 
 class SummaryPage2 extends Component {
 
@@ -16,6 +17,8 @@ class SummaryPage2 extends Component {
 
         this.generateLineChart = this.generateLineChart.bind(this)
         this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleBackButton = this.handleBackButton.bind(this)
+
     }
 
     componentDidMount() {
@@ -116,6 +119,12 @@ class SummaryPage2 extends Component {
         })
     }
 
+    handleBackButton() {
+        this.props.history.push({
+            pathname: '/Summary'
+        })
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -143,6 +152,7 @@ class SummaryPage2 extends Component {
                 </div>
                 <div style={{position: "absolute", left: "35%", textAlign: "center"}}>
                     <h2>Rain fall in {states}</h2>
+                    <button className="registerButton" onClick={this.handleBackButton}>Back</button>
                     <button className="registerButton" onClick={this.handleButtonClick}>Next</button>
                 </div>
             </div>
